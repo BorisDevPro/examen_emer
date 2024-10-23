@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Times New Roman', Times, serif;
+            background-color: rgb(55, 210, 231);
+            
+        }
+        .nuevo{
+            background-color: azure;
+            border: solid black 2px;
+            border-radius: 5px;
+            padding: 5px;
+            color: black;
+        }
+        .nuevo:hover{
+            background-color: rgb(252, 14, 14);
+        }
+        
+        a{
+            text-decoration: none;
+        }
+        .datos{
+            display: inline-block;
+            border: solid black 2px;
+            padding: 1em 10em;
+        }
+        .elim{
+            cursor: pointer;
+            background-color: azure;
+        }
+        .elim:hover{
+            background-color: rgb(252, 29, 29);
+        }
+        td,th{
+            font-size: 1em;
+            text-decoration: solid;
+            padding: 1em;
+        }
+        
+    </style>
+    <title>PRODUCTOS</title>
+</head>
+<body>
+    <div class="datos">
+        <h2>SEGUNDO PARCIAL TEM-742</h2>
+        <P><b>Nombre:</b> Boris Alanoca Plata </P>
+        <p><b>Carnet:</b> 6916942</p>
+    </div>
+    <div class="tabla">
+        <h1>Gestion de Productos</h1>
+    <a href="{{url_for('nuevo')}}" class="nuevo">Nuevo Producto</a>
+    <br>
+    <br>
+    <table border="1" cellspacing="0">
+        <tr>
+            <th>Id</th>
+            <th>Nombre</th>
+            <th>Cantidad</th>
+            <th>Precio</th>
+            <th>Fecha_vencimiento</th>
+            <th>Categoria</th>
+            <th colspan="2">Accion</th>
+        </tr>
+        {% for item in producto%}
+        <tr>
+            <td>{{item.id}}</td>
+            <td>{{item.descripcion}}</td>
+            <td>{{item.cantidad}}</td>
+            <td>{{item.precio}}</td>
+            <td>{{item.fecha}}</td>
+            <td>{{item.categoria}}</td>
+            <td><a href="{{url_for('editar',id=item.id)}}"><input type="submit" value="Editar" class="elim"></a></td>
+            <td>
+                <form action="{{url_for('eliminar',id=item.id)}}" method="POST">
+                    <input type="submit" class="elim" value="eliminar" >
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+    </div>
+    
+</body>
+</html>

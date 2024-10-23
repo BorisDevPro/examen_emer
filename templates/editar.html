@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body{
+            background-color: aqua;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .container{
+            border: solid black 2px;
+            padding: 5em;
+        }
+        .boton{
+            background-color: beige;
+            cursor: pointer;
+            margin-left: 2em;
+        }
+        .boton:hover{
+            background-color: rgb(240, 51, 51);
+        }
+    </style>
+    <title>Editar Producto</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Editar Producto</h1>
+        <form action="{{url_for('editar', id=productos.id)}}" method="POST">
+            Nombre: <input type="text" name="descripcion" value="{{productos['descripcion']}}" required><br>
+            cantidad: <input type="number" name="cantidad" value="{{productos['cantidad']}}" required><br>
+            precio: <input type="number" name="precio" value="{{productos['precio']}}" required step="0.01"><br>
+            Fecha: <input type="date" name="fecha" value="{{productos['fecha']}}" required><br>
+            categoria: <input type="text" name="categoria" value="{{productos['categoria']}}" required><br><br>
+            <input type="submit" value="Editar" class="boton"> 
+            <a href="{{url_for('index')}}"><input type="submit" value="Inicio" class="boton"></a>
+        </form>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body{
+            background-color: aqua;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            
+        }
+        .container{
+            border: solid black 2px;
+            padding: 5em;
+        }
+        .boton{
+            cursor: pointer;
+            margin-left: 2em;
+        }
+    </style>
+    <title>Nuevo Producto</title>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Nuevo Producto</h1>
+        <form action="{{ url_for('nuevo') }}" method="POST">
+            Nombre: <input type="text" name="descripcion" required><br>
+            cantidad: <input type="number" name="cantidad" required><br>
+            precio: <input type="number" name="precio" required step="0.01"><br>
+            Fecha_vencimiento: <input type="date" name="fecha" required><br>
+            categoria: <input type="text" name="categoria" required><br><br>
+            <input type="submit" class="boton" value="Agregar Producto">
+        </form>
+    </div>
+
+</body>
+
+</html>
